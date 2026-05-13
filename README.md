@@ -11,27 +11,27 @@ Angular app
 
 ## Installation
 ### Cloner le projet
-`git clone git@github.com:laylah57/erp-eni-ecole.git`
-`cd erp-eni-ecole`
+`git clone git@github.com:laylah57/erp-eni-ecole.git` <br>
+`cd erp-eni-ecole`<br>
 
 ### Démarrer le backend
-`cd backend`
-`python -m venv venv`
-MacOS/Linux
-`source venv/bin/activate`
-Windows
-`venv/Scripts/activate`
-`pip install django djangorestframework`
-`python manage.py migrate`
-`python manage.py runserver`
+`cd backend`<br>
+`python -m venv venv`<br>
+MacOS/Linux<br>
+`source venv/bin/activate`<br>
+Windows<br>
+`venv/Scripts/activate`<br>
+`pip install django djangorestframework`<br>
+`python manage.py migrate`<br>
+`python manage.py runserver`<br>
 
 URL du backend: 
 http://127.0.0.1:8000/
 
 ### Démarrer le frontend
-`cd frontend`
-`npm install`
-`npm start`
+`cd frontend`<br>
+`npm install`<br>
+`npm start`<br>
 
 URL du frontend:
 http://localhost:4200/
