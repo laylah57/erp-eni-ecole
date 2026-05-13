@@ -17,10 +17,12 @@ Angular app
 ### Démarrer le backend
 `cd backend`<br>
 `python -m venv venv`<br>
+<br>
 MacOS/Linux<br>
 `source venv/bin/activate`<br>
 Windows<br>
 `venv/Scripts/activate`<br>
+<br>
 `pip install django djangorestframework`<br>
 `python manage.py migrate`<br>
 `python manage.py runserver`<br>
