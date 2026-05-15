@@ -23,7 +23,8 @@ MacOS/Linux<br>
 Windows<br>
 `venv/Scripts/activate`<br>
 <br>
-`pip install django djangorestframework`<br>
+`pip install -r requirements.txt`<br>
+`python -m django --version`<br>
 `python manage.py migrate`<br>
 `python manage.py runserver`<br>
 
@@ -37,6 +38,5 @@ http://127.0.0.1:8000/
 
 URL du frontend:
 http://localhost:4200/
-
 
 
