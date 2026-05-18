@@ -14,7 +14,7 @@ class Cursus(models.Model):
 
     nom = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    Filiere = models.ForeignKey(Filiere, on_delete=models.CASCADE, related_name='cursus')
+    filiere = models.ForeignKey(Filiere, on_delete=models.CASCADE, related_name='cursus')
 
     def __str__(self):
 
@@ -27,7 +27,7 @@ class Cours(models.Model):
     
     def __str__(self):
 
-        return self.nom      
+        return self.titre      
 
 class CursusCours(models.Model):
 
@@ -43,7 +43,9 @@ class CursusCours(models.Model):
            models.UniqueConstraint(fields=['cursus', 'ordre'], name='unique_cursus_ordre')
         ]
         ordering = ['ordre']
-
+	
+    def __str__(self):
+        return f"{self.cursus.nom} - {self.ordre} - {self.cours.titre}"
 
 class Promotion(models.Model):
 
