@@ -32,6 +32,10 @@ Windows<br>
 `pip install -r requirements.txt`<br>
 `python -m django --version`<br>
 
+### Générer une clé secrète pour le projet
+- Dans le terminal, exécuter `python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`
+- Renseigner la clé générée pour la variable `SECRET_KEY` du fichier `.env`
+
 ### Tester la connexion à la base de données et effectuer les migrations
 - Pour tester la connexion à la base de données, exécuter `python manage.py migrate --plan`
 - Si tout va bien, exécuter les migrations `python manage.py migrate`
