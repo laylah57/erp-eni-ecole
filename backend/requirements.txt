@@ -2,7 +2,11 @@ asgiref==3.11.1
 black==26.5.0
 click==8.4.0
 Django==6.0.5
+django-cors-headers==4.9.0
+django-stubs==6.0.4
+django-stubs-ext==6.0.4
 djangorestframework==3.17.1
+djangorestframework-stubs==3.17.0
 djangorestframework_simplejwt==5.5.1
 mypy_extensions==1.1.0
 packaging==26.2
@@ -14,3 +18,5 @@ PyJWT==2.12.1
 python-dotenv==1.2.2
 pytokens==0.4.1
 sqlparse==0.5.5
+types-PyYAML==6.0.12.20260518
+typing_extensions==4.15.0
