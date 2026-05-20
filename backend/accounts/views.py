@@ -5,8 +5,9 @@ from rest_framework.response import (
 
 # dictionaries/lists, and DRF turns it into JSON.
 from rest_framework.views import APIView
+from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.serializers import UserSerializer
+from accounts.serializers import EmailTokenObtainPairSerializer, UserSerializer
 
 
 class CurrentUserView(APIView):
@@ -19,3 +20,6 @@ class CurrentUserView(APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+class EmailTokenObtainPairView(TokenObtainPairView):
+    serializer_class = EmailTokenObtainPairSerializer
