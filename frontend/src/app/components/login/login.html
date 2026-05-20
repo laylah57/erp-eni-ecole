@@ -1,0 +1,53 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="m-auto p-4 light-bg">
+    <h1 class="mb-4">Connexion ENI</h1>
+    <form
+      [formGroup]="loginForm"
+      (submit)="onSubmit()"
+    >
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          class="form-control"
+          [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+          formControlName="email"
+          id="email"
+          name="email"
+          placeholder="jean.dupont@eni.fr"
+          type="text"
+        />
+        <div
+          class="invalid-feedback d-block feedback-height-override"
+          [class.invisible]="!(loginForm.get('email')?.invalid && loginForm.get('email')?.touched)"
+        >
+          @if(loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched){
+            Le champs est requis
+          }
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          class="form-control"
+          [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          formControlName="password"
+          id="password"
+          name="password"
+          placeholder="******"
+          type="password"
+        />
+        <div
+          class="invalid-feedback d-block feedback-height-override"
+          [class.invisible]="!(loginForm.get('password')?.invalid && loginForm.get('password')?.touched)"
+        >
+          @if(loginForm.get('password')?.errors?.['required']){
+            Le champs est requis
+          }
+        </div>
+      </div>
+
+      <button class="btn btn-primary d-block m-auto" type="submit">Se connecter</button>
+    </form>
+  </div>
+</div>
+
