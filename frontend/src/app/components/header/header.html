@@ -1,0 +1,17 @@
+<h1>ENI Ecole</h1>
+<div class="col-10 d-flex justify-content-between align-items-center">
+  <h2>Espace administration</h2>
+  <div class="d-flex align-items-center gap-2 position-relative">
+    <span>Bonjour, utilisateur</span>
+    <button class="btn px-0" (click)="toggleMenu()" type="button">
+      <i class="bi bi-person-circle fs-2"></i>
+    </button>
+    <div
+      class="position-absolute bg-white shadow-sm p-2 top-100 end-0"
+      [class.d-none] = "!isMenuOpen"
+    >
+      <button class="btn" type="button">Mon profil</button>
+      <button class="btn" (click)="logout()" type="button">Déconnexion</button>
+    </div>
+  </div>
+</div>
