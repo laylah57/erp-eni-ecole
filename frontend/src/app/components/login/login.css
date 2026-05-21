@@ -1,0 +1,9 @@
+.light-bg {
+  background-color: #f3f7ff;
+  border-radius: 8px;
+}
+
+.feedback-height-override {
+  min-height: 1.3em;
+  margin-bottom: 1em;
+}

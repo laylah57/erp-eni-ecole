@@ -1,0 +1,16 @@
+import { Component, inject } from '@angular/core';
+import { Auth } from '../../services/auth';
+
+@Component({
+  selector: 'app-dashboard',
+  imports: [],
+  templateUrl: './dashboard.html',
+  styleUrl: './dashboard.css',
+})
+export class Dashboard {
+  private auth = inject(Auth)
+
+  logout() {
+    this.auth.logout()
+  }
+}
