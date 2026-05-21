@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Auth } from '../../services/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { Auth } from '../../services/auth';
 })
 export class Login {
   private auth = inject(Auth);
+  private router = inject(Router)
 
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]), // Decide what should be the minimum length
@@ -30,12 +32,13 @@ export class Login {
         next: (tokens) => {
           this.auth.saveTokens(tokens);
           this.auth.getCurrentUser().subscribe({
-            next: (user) => console.log(user),
+            next: () => this.router.navigate([""]),
             error: (error) => console.error(error),
           });
         },
         error: (error) => console.error(error),
       });
+
     }
   }
 }

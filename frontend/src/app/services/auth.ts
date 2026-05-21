@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface AuthTokens {
   access: string;
@@ -20,6 +21,7 @@ interface CurrentUser {
 })
 export class Auth {
   private http = inject(HttpClient);
+  private router = inject(Router)
   private apiUrl = 'http://127.0.0.1:8000/api';
 
   login(email: string, password: string) {
@@ -45,6 +47,7 @@ export class Auth {
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
+    this.router.navigate(['/login']);
   }
 
   getCurrentUser() {
@@ -57,5 +60,9 @@ export class Auth {
         Authorization: `Bearer ${accessToken}`, // Eventually, use Angular HTTP interceptor
       },
     });
+  }
+
+  isLoggedIn() {
+    return !!this.getAccessToken() // Same as this.getAcessToken() ? true : false
   }
 }
