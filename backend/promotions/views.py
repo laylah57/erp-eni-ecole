@@ -4,14 +4,22 @@ from .models import (
     Promotion,
     Inscription,
     CoursPlanifie,
-    Animer
+    Animer,
+    Filiere,
+    Cursus,
+    Cours,
+    CursusCours,
 )
 
 from .serializers import (
     PromotionSerializer,
     InscriptionSerializer,
     CoursPlanifieSerializer,
-    AnimerSerializer
+    AnimerSerializer,
+    FiliereSerializer,
+    CursusSerializer,
+    CoursSerializer,
+    CursusCoursSerializer,
 )
 
 
@@ -33,3 +41,22 @@ class CoursPlanifieViewSet(viewsets.ModelViewSet):
 class AnimerViewSet(viewsets.ModelViewSet):
     queryset = Animer.objects.all()
     serializer_class = AnimerSerializer
+
+class FiliereViewSet(viewsets.ModelViewSet):
+    queryset = Filiere.objects.all()
+    serializer_class = FiliereSerializer
+
+
+class CursusViewSet(viewsets.ModelViewSet):
+    queryset = Cursus.objects.all()
+    serializer_class = CursusSerializer
+
+
+class CoursViewSet(viewsets.ModelViewSet):
+    queryset = Cours.objects.all()
+    serializer_class = CoursSerializer
+
+
+class CursusCoursViewSet(viewsets.ModelViewSet):
+    queryset = CursusCours.objects.all()
+    serializer_class = CursusCoursSerializer
