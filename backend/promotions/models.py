@@ -13,7 +13,11 @@ class Filiere(models.Model):
 class Cursus(models.Model):
     nom = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    filiere = models.ForeignKey(Filiere, on_delete=models.CASCADE, related_name="cursus")
+    filiere = models.ForeignKey(
+        Filiere,
+        on_delete=models.CASCADE,
+        related_name="cursus"
+    )
 
     def __str__(self):
         return self.nom
@@ -29,15 +33,25 @@ class Cours(models.Model):
 
 
 class CursusCours(models.Model):
-    cursus = models.ForeignKey(Cursus, on_delete=models.CASCADE, related_name="cursus_cours")
-    cours = models.ForeignKey(Cours, on_delete=models.CASCADE)
+    cursus = models.ForeignKey(
+        Cursus,
+        on_delete=models.CASCADE,
+        related_name="cursus_cours"
+    )
+    cours = models.ForeignKey(
+        Cours,
+        on_delete=models.CASCADE
+    )
     ordre = models.PositiveIntegerField()
     obligatoire = models.BooleanField(default=True)
 
     class Meta:
         unique_together = ("cursus", "cours")
         constraints = [
-            models.UniqueConstraint(fields=["cursus", "ordre"], name="unique_cursus_ordre")
+            models.UniqueConstraint(
+                fields=["cursus", "ordre"],
+                name="unique_cursus_ordre"
+            )
         ]
         ordering = ["ordre"]
 
@@ -55,7 +69,10 @@ class Promotion(models.Model):
 
 
 class Inscription(models.Model):
-    utilisateur = models.ForeignKey(User, on_delete=models.CASCADE)
+    utilisateur = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
     promotion = models.ForeignKey(
         Promotion,
         on_delete=models.CASCADE,
@@ -66,3 +83,32 @@ class Inscription(models.Model):
 
     def __str__(self):
         return f"{self.utilisateur.username} - {self.promotion.nom}"
+
+
+class CoursPlanifie(models.Model):
+    promotion = models.ForeignKey(
+        Promotion,
+        on_delete=models.CASCADE,
+        related_name="cours_planifies"
+    )
+    titre = models.CharField(max_length=255)
+    date_debut = models.DateTimeField()
+    date_fin = models.DateTimeField()
+    salle = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.titre
+
+
+class Animer(models.Model):
+    formateur = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+    cours_planifie = models.ForeignKey(
+        CoursPlanifie,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return f"{self.formateur.username} - {self.cours_planifie.titre}"
